@@ -2,9 +2,20 @@
 
 if($_POST){
   $chars = (int)$_POST["zeichenanzahl"];
+
+  if($chars < 6 || $chars > 15){
+    $error = "Zeichenlänge muss zwischen 6 und 30 Zeichen lang sein";
+    $randompassword = "ERROR";
+
+
+  }else{
+  $error = NULL;
   $randomizer = new \Random\Randomizer();
-  $sourcestring = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  $sourcestring = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!";
   $randompassword = $randomizer->getBytesFromString($sourcestring, $chars);
+  }
+
+  
 }
 
 ?>
@@ -20,37 +31,40 @@ if($_POST){
 </head>
 <body>
 
-<div class="title-container">
-  <h1>Passwort Generator</h1>
-  <h3>Dein Passwort</h3>
-</div>
-
-
-<div class="password-container">
-  
-  <h5><?php echo $randompassword ?? "Klick auf generieren"; ?></h5>
-</div>
-
-<form action="#" method="POST">
-  <div class="inputs-container">
-    <div class="input-container">
-      <label for="number">Wie viele Zeichen ?</label>
-      <input
-        class="number-input"
-        type="number"
-        name="zeichenanzahl"
-        value="8"
-        min="6"
-        max="15"
-        id="number"
-        require
-      >
-    </div>
-
-      <input class="submit-input" type="submit" value="Generieren">
+<div class="generator-container">
+  <div class="title-container">
+    <h1>Passwort Generator</h1>
+    <h3>Dein Passwort</h3>
   </div>
-<a href="index.php">Zurücksetzen</a>
-</form>
+
+
+  <div class="password-container">
+    <h5><?php echo htmlspecialchars ($randompassword ?? "Klick auf generieren") ?></h5>
+    
+  </div>
+
+  <form action="#" method="POST">
+    <p>Wie viele Zeichen ?</p>
+    <div class="inputs-container">
+      
+        <label for="number"></label>
+        <input
+          class="number-input"
+          type="number"
+          name="zeichenanzahl"
+          value="6"
+          min="6"
+          max="15"
+          id="number"
+          require
+        >
+        <input class="submit-input" type="submit" value="Generieren">
+    </div>
+    
+  </form>
   
+</div>
+<button><a href="index.php">Zurücksetzen</a></button>
+<small><?php  echo $error ?? ""; ?></small>
 </body>
 </html>

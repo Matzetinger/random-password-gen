@@ -8,60 +8,87 @@ body {
   background-color: rgb(25, 24, 24);
   color: rgb(202, 208, 213);
   font-family: sans-serif;
-
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   height: 100vh;
-  gap: 3rem;
+  gap: 1rem;
 
-  .title-container {
+  .generator-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 3rem;
-  }
+    flex-direction: column;
+    gap: 5rem;
 
-  .password-container {
-    padding: 2rem 3rem;
-    background-color: rgb(81, 78, 78);
-    border-radius: 1rem;
-    color: aliceblue;
-  }
-
-  form {
-    input {
-      padding: 0.5rem 1rem;
-      border: none;
+    .title-container {
+      text-align: center;
     }
-    .inputs-container {
-      display: flex;
-      align-items: end;
-      gap: 0.5rem;
 
-      .input-container {
-        display: flex;
-        flex-direction: column;
-      }
+    .password-container {
+      padding: 2rem 3rem;
+      background-color: rgb(81, 78, 78);
+      border-radius: 1rem;
+      color: aliceblue;
+    }
 
-      label {
+    form {
+      p {
         text-align: center;
-        margin-bottom: 0.5rem;
       }
 
-      .number-input {
-        border-radius: 1rem 0 0 1rem;
-        background-color: rgb(81, 78, 78);
-        color: aliceblue;
-      }
+      .inputs-container {
+        margin-top: 1rem;
 
-      .submit-input {
-        border-radius: 0 1rem 1rem 0;
-        background-color: rgb(81, 78, 78);
-        color: aliceblue;
+        label {
+          display: none;
+        }
+
+        input {
+          padding: 0.5rem 1rem;
+          border: none;
+        }
+
+        .number-input {
+          border-radius: 1rem 0 0 1rem;
+          background-color: rgb(81, 78, 78);
+          color: aliceblue;
+        }
+
+        .submit-input {
+          border-radius: 0 1rem 1rem 0;
+          background-color: rgb(81, 78, 78);
+          color: aliceblue;
+          cursor: pointer;
+          &:hover {
+            background-color: rgb(99, 93, 93);
+          }
+        }
       }
     }
+  }
+
+  button {
+    padding: 0.1rem 0.5rem;
+    background-color: rgb(53, 49, 49);
+    border: none;
+    border-radius: 1rem;
+
+    a {
+      text-decoration: none;
+      color: rgb(112, 112, 112);
+    }
+    &:hover {
+      background-color: rgb(86, 71, 71);
+      a {
+        color: wheat;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  small {
+    color: rgb(190, 56, 56);
   }
 }
